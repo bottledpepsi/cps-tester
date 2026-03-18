@@ -10,6 +10,7 @@ This tool allows users to measure their clicking speed using either mouse button
    ```bash
    git clone [https://github.com/bottledpepsi/cps-tester.git](https://github.com/bottledpepsi/cps-tester.git)
 
-2. **Website**
+2. **Website:**
+
    You can test right now at:
    **[https://bottledpepsi.github.io/cps-tester/](https://bottledpepsi.github.io/cps-tester/)**
