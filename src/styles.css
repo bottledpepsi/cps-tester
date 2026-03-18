@@ -1,0 +1,96 @@
+* { box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 50px 10px;
+    background: #f4f6f8;
+    color: #222;
+}
+
+h1 { margin-bottom: 20px; }
+
+.controls { margin-bottom: 20px; }
+label { font-weight: bold; display: block; margin-bottom: 5px; }
+input {
+    padding: 8px;
+    font-size: 16px;
+    width: 160px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #0077ff;
+    color: white;
+}
+button:hover { background: #0066dd; }
+
+.stat { margin-top: 20px; font-size: 28px; font-weight: bold; }
+#timer { color: #0077ff; }
+#cps { color: #00a86b; }
+#clicks { color: #ff6b00; }
+
+#status { margin-top: 20px; font-size: 18px; }
+
+#history {
+    margin-top: 40px;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#history h2 { font-size: 22px; margin-bottom: 10px; text-align: center; }
+#sorter { margin-bottom: 10px; font-size: 14px; padding: 4px 8px; }
+
+.history-header, .history-entry {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    align-items: center;
+}
+
+.history-header div,
+.history-entry div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.history-header {
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+    padding: 5px 0;
+    padding-right: 16px;
+}
+
+#historyList {
+    max-height: 360px;
+    overflow-y: auto;
+}
+
+.history-entry {
+    border-bottom: 1px solid #ccc;
+    padding: 6px 0;
+    min-height: 36px;
+}
+
+.save-btn {
+    padding: 4px 6px;
+    font-size: 12px;
+    background: #00a86b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.save-btn:hover { background: #008f57; }
+
+.saved-label {
+    font-size: 12px;
+    color: #666;
+}
