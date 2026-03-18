@@ -4,13 +4,12 @@ A lightweight, high-performance **Clicks Per Second (CPS)** testing tool built w
 
 This tool allows users to measure their clicking speed using either mouse buttons or any keyboard key, featuring real-time analytics and persistent history tracking.
 
-## Website
-
-You can test right now at:
-**[https://bottledpepsi.github.io/cps-tester/](https://bottledpepsi.github.io/cps-tester/)**
-
 ## Installation & Usage
 
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/bottledpepsi/cps-tester.git](https://github.com/bottledpepsi/cps-tester.git)
+
+2. **Website**
+   You can test right now at:
+   **[https://bottledpepsi.github.io/cps-tester/](https://bottledpepsi.github.io/cps-tester/)**
