@@ -1,2 +1,11 @@
-# cps-tester
-A lightweight, high-performance Clicks Per Second (CPS) tester built with vanilla JavaScript. Features custom keybinding support, real-time analytics, and local session history.
+# CPS Tester
+
+A lightweight, high-performance **Clicks Per Second (CPS)** testing tool built with vanilla JavaScript, HTML5, and CSS3. 
+
+This tool allows users to measure their clicking speed using either mouse buttons or any keyboard key, featuring real-time analytics and persistent history tracking.
+
+## 🛠️ Installation & Usage
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/bottledpepsi/cps-tester.git](https://github.com/bottledpepsi/cps-tester.git)
