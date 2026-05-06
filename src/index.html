@@ -3,52 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SECURITY FIX: Add a strict Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none';">
+    <meta name="description" content="A lightweight Clicks Per Second (CPS) tester. Measure your clicking speed with any key or mouse button.">
     <title>CPS Tester</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <h1>CPS Tester</h1>
+    <main>
+        <h1>CPS Tester</h1>
 
-    <div class="controls">
-        <div>
-            <label for="seconds">Test Length (seconds)</label>
-            <input type="number" id="seconds" value="5" min="1">
-        </div>
-        <div>
-            <label for="keyInput">Test Key / Mouse Button</label>
-            <input type="text" id="keyInput" placeholder="Click here to set key" readonly>
-        </div>
-        <button id="startButton">Start Test</button>
-        <div id="status">Choose a key or mouse button and start the test.</div>
-    </div>
+        <section class="controls" aria-label="Test configuration">
+            <div class="control-group">
+                <label for="seconds">Test Length (seconds)</label>
+                <input
+                    type="number"
+                    id="seconds"
+                    value="5"
+                    min="1"
+                    max="60"
+                    step="1"
+                    aria-describedby="seconds-hint"
+                >
+                <span id="seconds-hint" class="sr-only">Enter a number between 1 and 60</span>
+            </div>
+            <div class="control-group">
+                <label for="keyInput">Test Key / Mouse Button</label>
+                <input
+                    type="text"
+                    id="keyInput"
+                    placeholder="Click here to set key"
+                    readonly
+                    aria-describedby="keyInput-hint"
+                >
+                <span id="keyInput-hint" class="sr-only">Focus this field then press a key or mouse button to assign it</span>
+            </div>
+            <button id="startButton" aria-label="Start the CPS test">Start Test</button>
+            <div id="status" role="status" aria-live="polite">
+                Choose a key or mouse button and start the test.
+            </div>
+        </section>
 
-    <div id="timer" class="stat">Time: 0.0s</div>
-    <div id="cps" class="stat">CPS: 0.00</div>
-    <div id="clicks" class="stat">Clicks: 0</div>
+        <section class="stats" aria-label="Live test statistics">
+            <div id="timer" class="stat" aria-label="Time remaining" aria-live="off">Time: 0.0s</div>
+            <div id="cps"    class="stat" aria-label="Clicks per second" aria-live="off">CPS: 0.00</div>
+            <div id="clicks" class="stat" aria-label="Total clicks" aria-live="off">Clicks: 0</div>
+        </section>
 
-    <div id="history">
-        <h2>Previous Tests</h2>
-        <select id="sorter">
-            <option value="completed-desc">Completed (latest first)</option>
-            <option value="completed-asc">Completed (oldest first)</option>
-            <option value="cps-desc">CPS (highest first)</option>
-            <option value="cps-asc">CPS (lowest first)</option>
-            <option value="clicks-desc">Clicks (highest first)</option>
-            <option value="clicks-asc">Clicks (lowest first)</option>
-        </select>
+        <section id="history" aria-label="Previous test results">
+            <h2>Previous Tests</h2>
 
-        <div class="history-header">
-            <div>Key / Button</div>
-            <div>Time</div>
-            <div>Clicks</div>
-            <div>CPS</div>
-            <div>Completed</div>
-            <div>Save</div>
-        </div>
+            <div class="history-controls">
+                <label for="sorter" class="sr-only">Sort results by</label>
+                <select id="sorter" aria-label="Sort results">
+                    <option value="completed-desc">Completed (latest first)</option>
+                    <option value="completed-asc">Completed (oldest first)</option>
+                    <option value="cps-desc">CPS (highest first)</option>
+                    <option value="cps-asc">CPS (lowest first)</option>
+                    <option value="clicks-desc">Clicks (highest first)</option>
+                    <option value="clicks-asc">Clicks (lowest first)</option>
+                </select>
+                <button id="clearHistoryBtn" class="btn-danger" aria-label="Delete all test history">
+                    Clear History
+                </button>
+            </div>
 
-        <div id="historyList"></div>
-    </div>
+            <div
+                class="history-header"
+                role="row"
+                aria-label="Column headers"
+            >
+                <div role="columnheader">Key / Button</div>
+                <div role="columnheader">Time</div>
+                <div role="columnheader">Clicks</div>
+                <div role="columnheader">CPS</div>
+                <div role="columnheader">Completed</div>
+                <div role="columnheader">Actions</div>
+            </div>
+
+            <div id="historyList" role="list" aria-label="Test history"></div>
+            <p id="emptyState" class="empty-state" hidden>No tests recorded yet. Run your first test above!</p>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
