@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A fast, accurate Clicks Per Second tester for mouse, touch, and keyboard input.">
+  <meta name="theme-color" content="#f4f6f8">
+  <title>CPS Tester</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="page-header">
+      <h1>CPS Tester</h1>
+      <p class="subtitle">Measure how fast you can click, tap, or press a key.</p>
+    </header>
+
+    <section class="panel tester-panel" aria-labelledby="tester-heading">
+      <div class="section-heading">
+        <div>
+          <h2 id="tester-heading">New test</h2>
+          <p>Choose a duration and input, then press the selected input to begin.</p>
+        </div>
+        <span id="testState" class="state-badge" data-state="idle">Ready</span>
+      </div>
+
+      <div class="configuration-grid">
+        <div class="field-group">
+          <label for="durationInput">Test length</label>
+          <div class="input-with-unit">
+            <input id="durationInput" type="number" inputmode="numeric" min="1" max="60" step="1" value="5">
+            <span>seconds</span>
+          </div>
+          <p class="field-hint" id="durationHint">Choose between 1 and 60 seconds.</p>
+        </div>
+
+        <div class="field-group">
+          <label for="inputSelector">Test input</label>
+          <button id="inputSelector" class="input-selector" type="button" aria-describedby="inputHint">
+            <span class="input-selector-label">Not selected</span>
+            <span class="input-selector-action">Set input</span>
+          </button>
+          <p class="field-hint" id="inputHint">Click here, then press a key or mouse button.</p>
+        </div>
+      </div>
+
+      <div class="test-stage" id="testStage" tabindex="0" role="button" aria-label="CPS test area">
+        <div class="stage-content">
+          <span class="stage-icon" aria-hidden="true">⌁</span>
+          <strong id="stageTitle">Select an input to begin</strong>
+          <span id="stageInstruction">Your test will start with your first input.</span>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button id="startButton" class="primary-button" type="button">Start Test</button>
+        <button id="resetButton" class="secondary-button" type="button" disabled>Reset</button>
+      </div>
+
+      <p id="statusMessage" class="status-message" role="status" aria-live="polite">Choose an input and start the test.</p>
+    </section>
+
+    <section class="stats-grid" aria-label="Live test statistics">
+      <article class="stat-card stat-card-time">
+        <span class="stat-label">Time</span>
+        <strong id="timerValue">5.00s</strong>
+      </article>
+      <article class="stat-card stat-card-cps">
+        <span class="stat-label">CPS</span>
+        <strong id="cpsValue">0.00</strong>
+      </article>
+      <article class="stat-card stat-card-clicks">
+        <span class="stat-label">Clicks</span>
+        <strong id="clickCountValue">0</strong>
+      </article>
+    </section>
+
+    <section class="panel history-panel" aria-labelledby="history-heading">
+      <div class="section-heading history-heading">
+        <div>
+          <h2 id="history-heading">Previous tests</h2>
+          <p>Your results are stored locally in this browser.</p>
+        </div>
+        <button id="clearHistoryButton" class="danger-button" type="button">Clear history</button>
+      </div>
+
+      <div class="history-toolbar">
+        <label for="historySort">Sort by</label>
+        <select id="historySort">
+          <option value="completed-desc">Latest first</option>
+          <option value="completed-asc">Oldest first</option>
+          <option value="cps-desc">Highest CPS</option>
+          <option value="cps-asc">Lowest CPS</option>
+          <option value="clicks-desc">Most clicks</option>
+          <option value="clicks-asc">Fewest clicks</option>
+        </select>
+        <span id="historyCount" class="history-count">0 tests</span>
+      </div>
+
+      <div class="history-table" role="table" aria-label="Previous CPS tests">
+        <div class="history-row history-header" role="row">
+          <span role="columnheader">Input</span>
+          <span role="columnheader">Time</span>
+          <span role="columnheader">Clicks</span>
+          <span role="columnheader">CPS</span>
+          <span role="columnheader">Completed</span>
+          <span role="columnheader">Actions</span>
+        </div>
+        <div id="historyList" class="history-list" role="rowgroup"></div>
+      </div>
+      <p id="emptyHistory" class="empty-state">No tests recorded yet. Run your first test above!</p>
+    </section>
+
+    <footer class="page-footer">
+      <span><a href="https://bottledpepsi.github.io/">Homepage</a></span>
+      <span><a href="https://github.com/bottledpepsi/cps-tester/">GitHub</a></span>
+      <span><a href="https://www.gnu.org/licenses/gpl-3.0.html">License</a></span>
+    </footer>
+  </main>
+  <script src="src/js/app.js"></script>
+</body>
+</html>
